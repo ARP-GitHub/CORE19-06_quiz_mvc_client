@@ -16,7 +16,7 @@ let error_critical = null;
 // CONSTANTS
 const T_TEST = 2 * 60; // Time between tests (seconds)
 const browser = new Browser();
-const path_assignment = path.resolve("../quiz_MVC_client.html");
+const path_assignment = path.resolve(path.join(__dirname, "../quiz_MVC_client.html"));
 const URL = `file://${path_assignment.replace("%", "%25")}`;
 
 //TESTS
