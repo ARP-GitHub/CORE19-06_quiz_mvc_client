@@ -1,5 +1,5 @@
 /**
- * Corrector para la práctica de sql
+ * CORE19-06_quiz_mvc_client assignment checker
  */
 
 // IMPORTS
@@ -16,8 +16,8 @@ let error_critical = null;
 // CONSTANTS
 const T_TEST = 2 * 60; // Time between tests (seconds)
 const browser = new Browser();
-const path_assignment = path.resolve(path.join(__dirname, "../quiz_MVC_client.html"));
-const URL = `file://${path_assignment}`;
+const path_assignment = path.resolve("../quiz_MVC_client.html");
+const URL = `file://${path_assignment.replace("%", "%25")}`;
 
 //TESTS
 describe("CORE19-06_quiz_mvc_client", function () {
@@ -47,6 +47,7 @@ describe("CORE19-06_quiz_mvc_client", function () {
             this.msg_err = `Error parsing '${path_assignment}'`;
             [error_nav, resp] = await to(browser.visit(URL));
             if (error_nav) {
+                this.msg_err = `Error parsing '${path_assignment}': ${error_nav}`;
                 error_critical = this.msg_err;
             }
             should.not.exist(error_nav);
