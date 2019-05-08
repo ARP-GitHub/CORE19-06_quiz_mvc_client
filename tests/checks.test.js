@@ -17,7 +17,7 @@ let error_critical = null;
 const T_TEST = 2 * 60; // Time between tests (seconds)
 const browser = new Browser();
 const path_assignment = path.resolve(path.join(__dirname, "../quiz_MVC_client.html"));
-const URL = `file://${path_assignment.replace("%", "%25")}`;
+const URL = "file://"+path_assignment.replace("%", "%25");
 
 //TESTS
 describe("CORE19-06_quiz_mvc_client", function () {
@@ -33,7 +33,7 @@ describe("CORE19-06_quiz_mvc_client", function () {
         if (error_path) {
             error_critical = this.msg_err;
         }
-        path_ok.should.be.equal(true);
+        should.not.exist(error_critical);
     });
 
     it('', async function () {
@@ -41,7 +41,7 @@ describe("CORE19-06_quiz_mvc_client", function () {
         this.score = 0;
         if (error_critical) {
             this.msg_err = error_critical;
-            should.not.exist(error_critical);
+
         } else {
             this.msg_ok = `'${path_assignment}' has been parsed correctly`;
             this.msg_err = `Error parsing '${path_assignment}'`;
@@ -50,8 +50,8 @@ describe("CORE19-06_quiz_mvc_client", function () {
                 this.msg_err = `Error parsing '${path_assignment}': ${error_nav}`;
                 error_critical = this.msg_err;
             }
-            should.not.exist(error_nav);
         }
+        should.not.exist(error_critical);
     });
 
     it('', async function () {
